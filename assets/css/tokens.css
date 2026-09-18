@@ -1,0 +1,256 @@
+/* tokens.css — every value the rest of the codebase may use. If a number
+   appears in base/components/pages that is not 0, 1, 100%, 1fr or a simple
+   fraction of the grid, it belongs in here instead. */
+
+/* 1. TYPEFACES — self-hosted, Latin subset, no third-party request.
+   Display: Bricolage Grotesque, for the printed-masthead voice its irregular
+   joints give; a neutral grotesque read as generic. Two statics (44 KB), not
+   the variable file (131 KB for three axes we never animate).
+   Text: IBM Plex Sans, for its x-height, unambiguous 1/l/I and 0/O, and
+   technical tone. Both SIL OFL. Not Inter, Roboto or Poppins. */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("../fonts/bricolage-grotesque-600-latin.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("../fonts/bricolage-grotesque-800-latin.woff2") format("woff2");
+  font-weight: 800; font-style: normal; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  /* One variable file covers all three text weights. */
+  font-family: "IBM Plex Sans";
+  src: url("../fonts/ibm-plex-sans-var-latin.woff2") format("woff2");
+  font-weight: 400 600; font-style: normal; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("../fonts/ibm-plex-sans-italic-var-latin.woff2") format("woff2");
+  font-weight: 400 600; font-style: italic; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --font-display: "Bricolage Grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-text: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  /* Tabular figures for scores; no mono webfont — digits only. */
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+
+  /* 2. TYPE SCALE — ratio 1.250, fluid 375>1440px. Each step tops out at
+   exactly 18px * 1.25^n. The four display steps start below 17px * 1.25^n
+   on purpose: a true ramp puts an 81px headline on a 375px screen. */
+  --step--2: clamp(0.75rem, 0.728rem + 0.094vw, 0.8125rem);    /* 12 > 13 */
+  --step--1: clamp(0.85rem, 0.832rem + 0.075vw, 0.9rem);       /* 13.6 > 14.4 */
+  --step-0:  clamp(1.0625rem, 1.040rem + 0.094vw, 1.125rem);   /* 17 > 18 */
+  --step-1:  clamp(1.328rem, 1.301rem + 0.117vw, 1.406rem);    /* 21 > 22.5 */
+  --step-2:  clamp(1.6625rem, 1.629rem + 0.143vw, 1.758rem);   /* 27 > 28 */
+  --step-3:  clamp(1.875rem, 1.761rem + 0.487vw, 2.199rem);    /* 30 > 35 */
+  --step-4:  clamp(2.125rem, 1.905rem + 0.939vw, 2.75rem);     /* 34 > 44 */
+  --step-5:  clamp(2.5rem, 2.170rem + 1.409vw, 3.4375rem);     /* 40 > 55 */
+  --step-6:  clamp(2.875rem, 2.375rem + 2.132vw, 4.294rem);    /* 46 > 69 */
+  --step-7:  clamp(3.375rem, 2.675rem + 2.987vw, 5.363rem);    /* 54 > 86 */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-display: 800;
+
+  /* Leading tightens as size grows — the standard optical correction. */
+  --leading-display: 0.96;
+  --leading-heading: 1.12;
+  --leading-snug: 1.3;
+  --leading-body: 1.6;     /* the briefed value for body copy */
+
+  /* Display needs negative tracking; uppercase labels need positive. */
+  --tracking-display: -0.022em;
+  --tracking-heading: -0.012em;
+  --tracking-body: 0;
+  --tracking-label: 0.09em;
+
+  /* Measure: 62-72ch as briefed. Narrow is for pull quotes and captions. */
+  --measure: 68ch;
+  --measure-narrow: 46ch;
+  --measure-wide: 74ch;
+
+  /* 3. NEUTRAL RAMP — 12 steps generated in OKLCH at hue 258 (cool), chroma
+   tapering 0.024 > 0.004 so shadows read blue-grey and highlights stay
+   near-neutral. L* = 0.13 + 0.855t^1.22 spaces the dark end more finely,
+   where a dark-first UI works. Neither end is pure black or white. */
+  --n-00: #030711;
+  --n-01: #0A111B;
+  --n-02: #181F29;
+  --n-03: #293039;
+  --n-04: #3C434C;
+  --n-05: #515861;
+  --n-06: #696F77;
+  --n-07: #82878F;
+  --n-08: #9DA2A9;
+  --n-09: #BABEC4;
+  --n-10: #D8DBE0;
+  --n-11: #F8FAFD;
+
+  /* 4. ACCENT — one hue, OKLCH 52 (ember). Warm against cool neutrals, so it
+   registers at small sizes without a glow. Reserved for prose links, the
+   section rule, the score dial, current nav item, one primary button. */
+  --a-100: #FFE0CD;
+  --a-200: #FFC29E;
+  --a-300: #FAA36C;
+  --a-400: #EF853B;
+  --a-500: #E06D00;
+  --a-600: #C45500;
+  --a-700: #A24200;
+  --a-800: #772F00;
+  --a-900: #461A00;
+
+  /* Status hues, not a second accent: validation and pros/cons only. */
+  --ok-fg: #6FD6A6;
+  --ok-fg-light: #0B6B46;
+  --warn-fg: #FF9B9B;
+  --warn-fg-light: #9B1C1C;
+
+  /* 5. SPACE — 4px base grid; every value is a whole number of grid units. */
+  --space-1:  0.25rem;   /* 4px */
+  --space-2:  0.5rem;    /* 8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-7:  1.75rem;   /* 28px */
+  --space-8:  2rem;      /* 32px */
+  --space-9:  2.5rem;    /* 40px */
+  --space-10: 3rem;      /* 48px */
+  --space-11: 3.5rem;    /* 56px */
+  --space-12: 4rem;      /* 64px */
+  --space-13: 5rem;      /* 80px */
+  --space-14: 6rem;      /* 96px */
+  --space-15: 8rem;      /* 128px */
+  --space-16: 10rem;     /* 160px */
+
+  /* Section rhythm scales with the viewport. */
+  --space-section: clamp(var(--space-12), 6vw, var(--space-15));
+  --gutter: clamp(var(--space-4), 0.5rem + 2.5vw, var(--space-10));
+
+  /* Clearance around every ad unit: 160px clears the 150px minimum. */
+  --ad-clearance: var(--space-16);
+
+  /* 6. LAYOUT */
+  --wrap-max: 78rem;      /* 1248px — a 12-column grid at a sane measure */
+  --wrap-wide: 92rem;     /* 1472px — full-bleed editorial rows only */
+  --wrap-prose: 43rem;    /* 688px — lands body copy at roughly 68ch */
+  --rail: 21rem;          /* 336px — fits a 300px unit plus its padding */
+  --header-h: 4rem;
+
+  /* 7. RADIUS & BORDER — pills are for chips and tags, never buttons. */
+  --radius-1: 0.125rem;  /* 2px — inputs, small chips */
+  --radius-2: 0.25rem;   /* 4px — buttons, cards */
+  --radius-3: 0.5rem;    /* 8px — media, panels */
+  --radius-4: 0.75rem;   /* 12px — the largest used */
+  --radius-pill: 62.4375rem;
+  --border-hairline: 1px;
+  --border-thick: 2px;
+  --border-rule: 3px;    /* the accent section rule */
+
+  /* 8. MOTION — 150-250ms, transform and opacity only; the curve
+   decelerates hard so movement settles rather than drifting to a stop. */
+  --dur-1: 150ms;
+  --dur-2: 200ms;
+  --dur-3: 250ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* 9. DEPTH */
+  --z-raised: 10;
+  --z-sticky: 100;
+  --z-header: 200;
+  --z-menu: 300;
+  --z-consent: 400;
+}
+
+/* THEME — dark by default; an untouched toggle follows the OS, data-theme
+   always wins. Only color-scheme switches: each semantic colour is declared
+   once with light-dark(). The plain value above each pair is the fallback for
+   engines without light-dark(), and it is the dark value, so an old browser
+   gets the dark theme rather than an unstyled page. */
+:root { color-scheme: dark; }
+@media (prefers-color-scheme: light) { :root:not([data-theme]) { color-scheme: light; } }
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+
+:root {
+  /* SURFACES */
+  --surface-page: var(--n-01);
+  --surface-page: light-dark(var(--n-11), var(--n-01));
+  --surface-sunken: var(--n-00);                      /* footer, ad wells */
+  --surface-sunken: light-dark(var(--n-10), var(--n-00));
+  --surface-raised: var(--n-02);                      /* cards, table heads */
+  --surface-raised: light-dark(var(--n-11), var(--n-02));
+  --surface-overlay: var(--n-03);                     /* menu, consent, anchor */
+  --surface-overlay: light-dark(var(--n-11), var(--n-03));
+
+  /* BORDERS */
+  --border-subtle: var(--n-03);
+  --border-subtle: light-dark(var(--n-09), var(--n-03));
+  --border-medium: var(--n-04);
+  --border-medium: light-dark(var(--n-08), var(--n-04));
+  --border-strong: var(--n-05);
+  --border-strong: light-dark(var(--n-06), var(--n-05));
+
+  /* TEXT — measured contrast against --surface-page is noted per line. */
+  --text-strong: var(--n-11);                         /* dark 18.11 / light 19.27 */
+  --text-strong: light-dark(var(--n-00), var(--n-11));
+  --text-body: var(--n-10);                           /* dark 13.64 / light 18.11 */
+  --text-body: light-dark(var(--n-01), var(--n-10));
+  --text-muted: var(--n-08);                          /* dark  7.37 / light  6.88 */
+  --text-muted: light-dark(var(--n-05), var(--n-08));
+  --text-faint: var(--n-07);                          /* dark  5.24 — large text only */
+  --text-faint: light-dark(var(--n-06), var(--n-07));
+
+  /* ACCENT */
+  --accent-text: var(--a-400);                        /* dark 7.29 / light 6.06 */
+  --accent-text: light-dark(var(--a-700), var(--a-400));
+  --accent-quiet: var(--a-300);
+  --accent-quiet: light-dark(var(--a-800), var(--a-300));
+  --accent-solid: var(--a-500);
+  --accent-solid: light-dark(var(--a-700), var(--a-500));
+  --accent-solid-hover: var(--a-600);
+  --accent-solid-hover: light-dark(var(--a-800), var(--a-600));
+  --accent-wash: rgb(224 109 0 / 0.14);
+  --accent-wash: light-dark(rgb(162 66 0 / 0.10), rgb(224 109 0 / 0.14));
+  --on-accent: var(--n-00);                           /* 6.10 on --a-500 */
+  --on-accent: light-dark(var(--n-11), var(--n-00));
+
+  /* STATE */
+  --status-ok: var(--ok-fg);
+  --status-ok: light-dark(var(--ok-fg-light), var(--ok-fg));
+  --status-warn: var(--warn-fg);
+  --status-warn: light-dark(var(--warn-fg-light), var(--warn-fg));
+  --focus-ring: var(--a-300);
+  --focus-ring: light-dark(var(--a-700), var(--a-300));
+
+  /* 10. ELEVATION — layered, not one blur: the near shadow draws the edge,
+   the far one carries the lift. Shadows are not colours, so the light-mode
+   alphas swap through variables instead of light-dark(). */
+  --shadow-ink: 3 7 17;
+  --shadow-1: 0 1px 1px rgb(var(--shadow-ink) / var(--shadow-a1, 0.30));
+  --shadow-2: 0 1px 1px rgb(var(--shadow-ink) / var(--shadow-a1, 0.26)),
+              0 3px 8px -2px rgb(var(--shadow-ink) / var(--shadow-a2, 0.34));
+  --shadow-3: 0 1px 1px rgb(var(--shadow-ink) / var(--shadow-a1, 0.24)),
+              0 6px 16px -4px rgb(var(--shadow-ink) / var(--shadow-a2, 0.36)),
+              0 16px 32px -12px rgb(var(--shadow-ink) / var(--shadow-a3, 0.40));
+}
+
+:root[data-theme="light"] { --shadow-a1: 0.06; --shadow-a2: 0.08; --shadow-a3: 0.10; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) { --shadow-a1: 0.06; --shadow-a2: 0.08; --shadow-a3: 0.10; }
+}

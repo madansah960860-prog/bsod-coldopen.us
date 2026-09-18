@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review library — Cold Open</title>
+<meta name="description" content="Every game Cold Open has reviewed, with the score, genre, platform and year. Filter by genre, platform or release year and sort by score, title or date.">
+<link rel="canonical" href="https://coldopen.us/games.html">
+<meta name="theme-color" content="#0A111B">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cold Open">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Review library — Cold Open">
+<meta property="og:description" content="Every game we have reviewed, with the score, genre, platform and year. Filter and sort the whole library.">
+<meta property="og:url" content="https://coldopen.us/games.html">
+<meta property="og:image" content="https://coldopen.us/assets/img/og/og-games.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Cold Open mark above a frame-time graph rendered in amber and slate.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Review library — Cold Open">
+<meta name="twitter:description" content="Every game we have reviewed, with the score, genre, platform and year.">
+<meta name="twitter:image" content="https://coldopen.us/assets/img/og/og-games.png">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="assets/fonts/ibm-plex-sans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/bricolage-grotesque-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/reset.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://coldopen.us/" },
+    { "@type": "ListItem", "position": 2, "name": "Reviews", "item": "https://coldopen.us/games.html" }
+  ]
+}
+</script>
+</head>
+<body data-page="games">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="site-header__inner wrap wrap--wide">
+    <a class="masthead" href="index.html">
+      <svg class="masthead__mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+        <g class="mark-bracket">
+          <rect x="6" y="12" width="42" height="11"/>
+          <rect x="6" y="12" width="11" height="44"/>
+          <rect x="52" y="77" width="42" height="11"/>
+          <rect x="83" y="44" width="11" height="44"/>
+        </g>
+        <rect class="mark-cut" x="30" y="43" width="40" height="14"/>
+      </svg>
+      <span class="masthead__word">Cold Open</span>
+    </a>
+    <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+      <ul class="primary-nav__list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="games.html">Reviews</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="guides.html">Guides</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="site-header__actions">
+      <button class="icon-button theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+      <button class="icon-button nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="site-main">
+
+  <div class="page-head">
+    <div class="wrap">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li aria-current="page">Reviews</li>
+        </ol>
+      </nav>
+      <div class="page-head__inner page-head--split">
+        <h1 class="page-head__title">The review library</h1>
+        <p class="page-head__lede">Twelve games, reviewed to completion, scored against the same published rubric. Nothing in here was played from a preview build or written from a press kit.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="section wrap" aria-labelledby="library-title">
+    <h2 class="visually-hidden" id="library-title">Filter and browse reviews</h2>
+
+    <div class="library" data-library>
+
+      <div class="filter-bar" data-filter-bar hidden>
+        <div class="field">
+          <label class="field__label" for="filter-genre">Genre</label>
+          <select class="select" id="filter-genre">
+            <option value="all">All genres</option>
+            <option value="action">Action</option>
+            <option value="adventure">Adventure</option>
+            <option value="puzzle">Puzzle</option>
+            <option value="racing">Racing</option>
+            <option value="simulation">Simulation</option>
+            <option value="strategy">Strategy</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field__label" for="filter-platform">Platform</label>
+          <select class="select" id="filter-platform">
+            <option value="all">All platforms</option>
+            <option value="pc">PC</option>
+            <option value="console">Console</option>
+            <option value="handheld">Handheld</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field__label" for="filter-year">Year</label>
+          <select class="select" id="filter-year">
+            <option value="all">All years</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field__label" for="filter-sort">Sort by</label>
+          <select class="select" id="filter-sort">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="score">Highest score</option>
+            <option value="title">Title A–Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="filter-bar__actions">
+        <p class="filter-count" data-count role="status">Showing all 12 reviews</p>
+        <button class="btn btn--quiet" type="button" data-reset hidden>Clear all filters</button>
+      </div>
+
+      <div class="grid-cards grid-cards--wide" data-results>
+
+        <article class="card game-card" data-slug="cadence">
+          <div class="card__media media media--16x9">
+            <p class="score-badge">93</p>
+            <picture>
+              <source type="image/webp" sizes="(min-width: 64rem) 21rem, (min-width: 40rem) 44vw, 92vw" srcset="assets/img/games/cadence-400.webp 400w, assets/img/games/cadence-800.webp 800w">
+              <img src="assets/img/games/cadence-400.webp" width="1600" height="900" alt="Stacked translucent cubes catching cold light against a dark ground." loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="card__body">
+            <p class="eyebrow">Puzzle</p>
+            <h3 class="card__title"><a href="game-detail.html">Cadence Machine</a></h3>
+            <p class="card__excerpt">A scheduling puzzle that turns into a habit somewhere around hour nine. The clearest systems teaching we have seen in years.</p>
+            <p class="game-card__facts"><span>PC</span><span>Console</span><span>2024</span></p>
+          </div>
+        </article>
+
+        <article class="card game-card" data-slug="deadline-protocol">
+          <div class="card__media media media--16x9">
+            <p class="score-badge">91</p>
+            <picture>
+              <source type="image/webp" sizes="(min-width: 64rem) 21rem, (min-width: 40rem) 44vw, 92vw" srcset="assets/img/games/deadline-protocol-400.webp 400w, assets/img/games/deadline-protocol-800.webp 800w">
+              <img src="assets/img/games/deadline-protocol-400.webp" width="1600" height="900" alt="Macro view of a processor die surrounded by gold contact pins." loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="card__body">
+            <p class="eyebrow">Strategy</p>
+            <h3 class="card__title"><a href="game-detail.html">Deadline Protocol</a></h3>
+            <p class="card__excerpt">An incident-response sim that understands the real obstacle is never the outage. It is the org chart above it.</p>
+            <p class="game-card__facts"><span>PC</span><span>2025</span></p>
+          </div>
+        </article>
+
+        <article class="card game-card" data-slug="nightshift">
+          <div class="card__media media media--16x9">
+            <p class="score-badge">88</p>
+            <picture>
+              <source type="image/webp" sizes="(min-width: 64rem) 21rem, (min-width: 40rem) 44vw, 92vw" srcset="assets/img/games/nightshift-400.webp 400w, assets/img/games/nightshift-800.webp 800w">
+              <img src="assets/img/games/nightshift-400.webp" width="1600" height="900" alt="Out-of-focus city lights scattered across a night frame." loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="card__body">
+            <p class="eyebrow">Simulation</p>
+            <h3 class="card__title"><a href="game-detail.html">Nightshift Courier</a></h3>
+            <p class="card__excerpt">Three years old and still the most honest depiction of gig work anyone has shipped. The tiredness is the mechanic.</p>
+            <p class="game-card__facts"><span>PC</span><span>Console</span><span>2023</span></p>
+          </div>
+        </article>
+
+        <article class="card game-card" data-slug="ashfall">
+          <div class="card__media media media--16x9">
+            <p class="score-badge">86</p>
+            <picture>
+              <source type="image/webp" sizes="(min-width: 64rem) 21rem, (min-width: 40rem) 44vw, 92vw" srcset="assets/img/games/ashfall-400.webp 400w, assets/img/games/ashfall-800.webp 800w">
+              <img src="assets/img/games/ashfall-400.webp" width="1600" height="900" alt="Pale smoke curling through darkness, lit from one side." loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="card__body">
+            <p class="eyebrow">Action</p>
+            <h3 class="card__title"><a href="game-detail.html">Ashfall Parade</a></h3>
+            <p class="card__excerpt">Eighteen months of patches finally repaired the middle nine hours. The combat was always good; now the pacing is too.</p>
+            <p class="game-card__facts"><span>PC</span><span>Console</span><span>2025</span></p>
+          </div>
+        </article>
+
+        <article class="card game-card" data-slug="pale-fire">
+          <div class="card__media media media--16x9">
+            <p class="score-badge">85</p>
+            <picture>
+              <source type="image/webp" sizes="(min-width: 64rem) 21rem, (min-width: 40rem) 44vw, 92vw" srcset="assets/img/games/pale-fire-400.webp 400w, assets/img/games/pale-fire-800.webp 800w">
+              <img src="assets/img/games/pale-fire-400.webp" width="1600" height="900" alt="Cold blue smoke drifting in front of a black backdrop." loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="card__body">
+            <p class="eyebrow">Adventure</p>
+            <h3 class="card__title"><a href="game-detail.html">Pale Fire Station</a></h3>
+            <p class="card__excerpt">Horror with no combat, no chase music and no monster on screen. It turns out that is all the pressure it needs.</p>
+            <p class="game-card__facts"><span>PC</span><span>Console</span><span>2025</span></p>
+          </div>
+        </article>
+
+        <article class="card game-card" data-slug="filament">
+          <div class="card__media media media--16x9">
+            <p class="score-badge">83</p>
+            <picture>
+              <source type="image/webp" sizes="(min-width: 64rem) 21rem, (min-width: 40rem) 44vw, 92vw" srcset="assets/img/games/filament-400.webp 400w, assets/img/games/filament-800.webp 800w">
+              <img src="assets/img/games/filament-400.webp" width="1600" height="900" alt="A spray of fibre-optic strands glowing at their tips against black." loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="card__body">
+            <p class="eyebrow">Puzzle</p>
+            <h3 class="card__title"><a href="game-detail.html">Filament and Bone</a></h3>
+            <p class="card__excerpt">A tactile puzzle box that never explains itself and never needs to. Four hours long, and not one wasted minute.</p>
+            <p class="game-card__facts"><span>PC</span><span>Handheld</span><span>2024</span></p>
+          </div>
+        </article>
+
+        <article class="card game-card" data-slug="orbital-mechanic">
+          <div class="card__media media media--16x9">
+            <p class="score-badge">81</p>
+            <picture>
+              <source type="image/webp" sizes="(min-width: 64rem) 21rem, (min-width: 40rem) 44vw, 92vw" srcset="assets/img/games/orbital-mechanic-400.webp 400w, assets/img/games/orbital-mechanic-800.webp 800w">
+              <img src="assets/img/games/orbital-mechanic-400.webp" width="1600" height="900" alt="Streaks of blue light arcing across a black field." loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="card__body">
+            <p class="eyebrow">Strategy</p>
+            <h3 class="card__title"><a href="game-detail.html">Orbital Mechanic</a></h3>
+            <p class="card__excerpt">Teaches orbital transfer without a single tutorial pop-up. Punishing, entirely fair, and very slow to forgive.</p>
+            <p class="game-card__facts"><span>PC</span><span>2023</span></p>
+          </div>
+        </article>
+
+        <article class="card game-card" data-slug="solaris">
+          <div class="card__media media media--16x9">
+            <p class="score-badge">78</p>
+            <picture>
+              <source type="image/webp" sizes="(min-width: 64rem) 21rem, (min-width: 40rem) 44vw, 92vw" srcset="assets/img/games/solaris-400.webp 400w, assets/img/games/solaris-800.webp 800w">
+              <img src="assets/img/games/solaris-400.webp" width="1600" height="900" alt="A soft gradient of warm light dissolving into deep shadow." loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="card__body">
+            <p class="eyebrow">Racing</p>
+            <h3 class="card__title"><a href="game-detail.html">Solaris Drift</a></h3>
+            <p class="card__excerpt">One of the best handling models of the decade, bolted to a career mode almost nobody finished. Race it in single events.</p>
+            <p class="game-card__facts"><span>PC</span><span>2024</span></p>
+          </div>
+        </article>
+
+        <article class="card game-card" data-slug="hauling">
+          <div class="card__media media media--16x9">
+            <p class="score-badge">76</p>
+            <picture>
+              <source type="image/webp" sizes="(min-width: 64rem) 21rem, (min-width: 40rem) 44vw, 92vw" srcset="assets/img/games/hauling-400.webp 400w, assets/img/games/hauling-800.webp 800w">
+              <img src="assets/img/games/hauling-400.webp" width="1600" height="900" alt="A single ribbon of tail-light trailing away down an empty road." loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="card__body">
+            <p class="eyebrow">Simulation</p>
+            <h3 class="card__title"><a href="game-detail.html">The Long Hauling</a></h3>
+            <p class="card__excerpt">Long drives, a genuinely good radio, and an economy that quietly stops mattering about twenty hours in.</p>
+            <p class="game-card__facts"><span>Console</span><span>2025</span></p>
+          </div>
+        </article>
+
+        <article class="card game-card" data-slug="tidewrack">
+          <div class="card__media media media--16x9">
+            <p class="score-badge">74</p>
+            <picture>
+              <source type="image/webp" sizes="(min-width: 64rem) 21rem, (min-width: 40rem) 44vw, 92vw" srcset="assets/img/games/tidewrack-400.webp 400w, assets/img/games/tidewrack-800.webp 800w">
+              <img src="assets/img/games/tidewrack-400.webp" width="1600" height="900" alt="Overlapping waves of muted colour fading toward a dark horizon." loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="card__body">
+            <p class="eyebrow">Adventure</p>
+            <h3 class="card__title"><a href="game-detail.html">Tidewrack</a></h3>
+            <p class="card__excerpt">A gorgeous coastline, a strong first act, and a story that loses its nerve in the last hour and explains itself to death.</p>
+            <p class="game-card__facts"><span>Console</span><span>2025</span></p>
+          </div>
+        </article>
+
+        <article class="card game-card" data-slug="claw">
+          <div class="card__media media media--16x9">
+            <p class="score-badge">72</p>
+            <picture>
+              <source type="image/webp" sizes="(min-width: 64rem) 21rem, (min-width: 40rem) 44vw, 92vw" srcset="assets/img/games/claw-400.webp 400w, assets/img/games/claw-800.webp 800w">
+              <img src="assets/img/games/claw-400.webp" width="1600" height="900" alt="A brightly lit arcade claw machine packed with coloured prizes." loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="card__body">
+            <p class="eyebrow">Racing</p>
+            <h3 class="card__title"><a href="game-detail.html">Claw Season</a></h3>
+            <p class="card__excerpt">Arcade handling that sings for ninety minutes and then repeats itself for nine hours. Worth the ninety minutes.</p>
+            <p class="game-card__facts"><span>Handheld</span><span>2024</span></p>
+          </div>
+        </article>
+
+        <article class="card game-card" data-slug="undertow">
+          <div class="card__media media media--16x9">
+            <p class="score-badge">69</p>
+            <picture>
+              <source type="image/webp" sizes="(min-width: 64rem) 21rem, (min-width: 40rem) 44vw, 92vw" srcset="assets/img/games/undertow-400.webp 400w, assets/img/games/undertow-800.webp 800w">
+              <img src="assets/img/games/undertow-400.webp" width="1600" height="900" alt="Blurred tunnel lighting stretched into horizontal bands of motion." loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="card__body">
+            <p class="eyebrow">Action</p>
+            <h3 class="card__title"><a href="game-detail.html">Undertow</a></h3>
+            <p class="card__excerpt">Precise platforming undone by checkpoint spacing that punishes the exact experimentation the level design invites.</p>
+            <p class="game-card__facts"><span>Handheld</span><span>2025</span></p>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="empty-state" data-empty hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/><path d="M8.5 11h5"/></svg>
+        <h3>No reviews match those filters</h3>
+        <p>We have only published twelve reviews so far, so some combinations genuinely have nothing in them yet. Try widening one filter.</p>
+        <button class="btn btn--outline" type="button" data-reset>Clear all filters</button>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="ad-slot ad-slot--leaderboard">
+      <p class="ad-slot__label">Advertisement</p>
+      <div class="ad-slot__frame">
+        <!-- AdSense 728x90. Height is reserved above; do not remove it.
+        <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="0000000000"></ins>
+        -->
+        728 &times; 90
+      </div>
+    </div>
+  </div>
+
+  <section class="section--tight wrap" aria-labelledby="how-title">
+    <div class="prose">
+      <h2 id="how-title">How this library works</h2>
+      <p>A review only enters the library once someone here has finished the game, or has played far enough past the point of diminishing returns that finishing would not change the argument. For a forty-hour strategy game that means forty hours. For a four-hour puzzle game it means four hours and then a second run.</p>
+      <h3>What the number means</h3>
+      <p>Scores are out of 100 and come from six weighted criteria, not from a gut feeling rounded to the nearest five. The weightings differ by genre, because framerate stability matters more in a twitch platformer than in a turn-based strategy game, and the rubric says so out loud on every review page. A 74 is not a failure. It is a game with real strengths and at least one structural problem we could not talk ourselves out of.</p>
+      <p>We do not adjust a score after publication unless the game itself changes. When it does, as with Ashfall Parade, we re-review it, date the revision, and leave the original text visible underneath. Quietly editing a score is the fastest way for a publication to become worthless.</p>
+      <h3>Filters and platforms</h3>
+      <p>The platform tags describe where we played the game, not everywhere it is sold. If a review says Console, a member of staff played it on a console from beginning to end. Where a game runs on more than one family of hardware and the experience differs materially, that difference is in the body of the review rather than hidden in a tag.</p>
+      <p>Filtering updates the address bar, so any view you build here can be bookmarked or sent to someone. With JavaScript switched off the filters are hidden and the full library is listed instead, which is the correct fallback: the content was never behind the control.</p>
+      <h3>What is not here</h3>
+      <p>No preview coverage, no early-access impressions presented as verdicts, and nothing written from a press kit. We also do not review games we cannot buy at retail price with our own money, which is slower and occasionally means we miss a launch window. That trade is the whole point of the place.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap wrap--wide">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <p class="masthead__word">Cold Open</p>
+        <p>An independent games publication. No sponsored reviews, no affiliate links in editorial, and every score explained.</p>
+      </div>
+      <nav aria-label="Sections">
+        <h2>Sections</h2>
+        <ul>
+          <li><a href="games.html">Reviews</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="guides.html">Guides</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="The publication">
+        <h2>The publication</h2>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="about.html#methodology">Review methodology</a></li>
+          <li><a href="about.html#ownership">Ownership and funding</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Legal">
+        <h2>Legal</h2>
+        <ul>
+          <li><a href="privacy.html">Privacy and cookies</a></li>
+          <li><a href="terms.html">Terms of service</a></li>
+          <li><a href="privacy.html#advertising">Advertising disclosure</a></li>
+          <li><button class="btn btn--quiet" type="button" data-consent-open>Cookie preferences</button></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="site-footer__legal">
+      <p>&copy; 2026 Cold Open Media Ltd. Registered in England and Wales.</p>
+      <p>Built as a static site. No trackers load before you say yes.</p>
+    </div>
+  </div>
+</footer>
+<div class="consent" data-consent-banner role="dialog" aria-modal="false" aria-labelledby="consent-title" aria-describedby="consent-text" hidden>
+  <h2 class="consent__title" id="consent-title">Cookies on Cold Open</h2>
+  <p class="consent__text" id="consent-text">We use cookies to run the site and, if you allow it, to show advertising and measure how pages perform. Advertising cookies may be set by Google and other third-party vendors. Nothing in the two groups below is switched on until you choose. Read the <a href="privacy.html">privacy and cookie policy</a>.</p>
+  <div class="consent__options">
+    <label class="checkbox"><input type="checkbox" id="consent-ads"> <span><strong>Advertising</strong> — lets Google and its partners store and read cookies to select and measure ads, including personalised ads.</span></label>
+    <label class="checkbox"><input type="checkbox" id="consent-analytics"> <span><strong>Analytics</strong> — aggregate page statistics so we know which articles are read.</span></label>
+  </div>
+  <div class="consent__actions">
+    <button class="btn btn--primary" type="button" data-action="accept">Accept all</button>
+    <button class="btn btn--outline" type="button" data-action="reject">Reject all</button>
+    <button class="btn btn--quiet" type="button" data-action="save">Save choices</button>
+  </div>
+</div>
+<script src="assets/js/consent.js" defer></script>
+<script src="assets/js/nav.js" defer></script>
+<script src="assets/js/filters.js" defer></script>
+</body>
+</html>

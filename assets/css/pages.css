@@ -1,0 +1,223 @@
+/* pages.css — arrangements used by exactly one template. Anything a second
+   template needs is promoted into components.css. */
+
+/* PAGE HEAD — the band under the masthead on index and detail pages. */
+.page-head {
+  padding-block: var(--space-12) var(--space-10);
+  border-bottom: var(--border-hairline) solid var(--border-subtle);
+}
+.page-head__inner { display: grid; gap: var(--space-5); }
+.page-head__title { font-size: var(--step-6); max-width: var(--measure-wide); }
+.page-head__lede { color: var(--text-muted); font-size: var(--step-1); line-height: var(--leading-snug); max-width: var(--measure); }
+@media (min-width: 64rem) {
+  .page-head--split .page-head__inner {
+    grid-template-columns: 6fr 5fr; gap: var(--space-12); align-items: end;
+  }
+  .page-head--split .page-head__lede { margin-bottom: var(--space-2); }
+}
+
+/* HOME */
+.home-lead { padding-block: var(--space-12) 0; }
+
+.home-lead__figure { position: relative; }
+/* An offset hairline frame — a printed-page device, not a drop shadow. */
+.home-lead__figure::before {
+  content: ""; position: absolute;
+  inset: var(--space-4) calc(var(--space-4) * -1) calc(var(--space-4) * -1) var(--space-4);
+  border: var(--border-hairline) solid var(--border-subtle); border-radius: var(--radius-3);
+  z-index: -1;
+}
+.home-lead__score { display: flex; align-items: center; gap: var(--space-5); }
+.home-lead__score .score { width: var(--space-14); height: var(--space-14); }
+.home-lead__score .score__value { font-size: var(--step-3); }
+.home-lead__verdict { font-size: var(--step--1); color: var(--text-muted); max-width: var(--measure-narrow); }
+
+/* Two columns of unequal weight, deliberately not three identical cards. */
+.home-split { display: grid; gap: var(--space-12); }
+@media (min-width: 64rem) {
+  .home-split { grid-template-columns: minmax(0, 1fr) 20rem; gap: var(--space-14); }
+}
+
+.editor-note {
+  border-top: var(--border-rule) solid var(--accent-solid); padding-top: var(--space-5);
+  display: grid; gap: var(--space-5);
+}
+.editor-note p { font-size: var(--step--1); color: var(--text-muted); }
+.editor-note p + p { margin-top: 0; }
+
+/* Browse by genre */
+.genre-grid {
+  display: grid; gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+}
+.genre-tile {
+  position: relative; display: grid; align-content: end; gap: var(--space-1);
+  min-height: var(--space-15); padding: var(--space-5);
+  border: var(--border-hairline) solid var(--border-subtle); border-radius: var(--radius-3);
+  text-decoration: none; overflow: hidden; background-color: var(--surface-raised);
+  transition: border-color var(--dur-2) var(--ease-out), transform var(--dur-2) var(--ease-out);
+}
+.genre-tile:hover { border-color: var(--accent-solid); transform: translateY(calc(var(--space-1) * -1)); }
+/* An original generated pattern, not a photograph. */
+.genre-tile::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: repeating-linear-gradient( var(--tile-angle, 45deg), var(--accent-wash) 0, var(--accent-wash) 1px, transparent 1px, transparent var(--tile-pitch, 9px));
+  opacity: 0.9; mask-image: linear-gradient(to top, transparent, #000);
+}
+.genre-tile__name { position: relative; font-family: var(--font-display); font-weight: var(--weight-display); font-size: var(--step-1); color: var(--text-strong); letter-spacing: var(--tracking-heading); }
+.genre-tile__count { position: relative; font-size: var(--step--2); color: var(--text-faint); letter-spacing: var(--tracking-label); text-transform: uppercase; }
+.genre-tile:nth-child(6n+1) { --tile-angle: 45deg;  --tile-pitch: 8px; }
+.genre-tile:nth-child(6n+2) { --tile-angle: 135deg; --tile-pitch: 12px; }
+.genre-tile:nth-child(6n+3) { --tile-angle: 90deg;  --tile-pitch: 7px; }
+.genre-tile:nth-child(6n+4) { --tile-angle: 20deg;  --tile-pitch: 14px; }
+.genre-tile:nth-child(6n+5) { --tile-angle: 160deg; --tile-pitch: 10px; }
+.genre-tile:nth-child(6n+6) { --tile-angle: 0deg;   --tile-pitch: 6px; }
+
+/* GAMES LIBRARY */
+.library { display: grid; gap: var(--space-10); }
+.game-card .card__media { position: relative; }
+.game-card__facts {
+  display: flex; flex-wrap: wrap; gap: var(--space-2); font-size: var(--step--2);
+  color: var(--text-faint); letter-spacing: var(--tracking-label); text-transform: uppercase;
+}
+.game-card__facts span + span::before { content: "\2022"; margin-right: var(--space-2); color: var(--border-strong); }
+/* Set by the filter script; with no script every card simply shows. */
+.game-card[data-hidden="true"] { display: none; }
+
+/* GAME DETAIL / REVIEW */
+.review-head { padding-block: var(--space-10) var(--space-12); }
+.review-head__grid { display: grid; gap: var(--space-8); }
+.breadcrumbs + .review-head__grid { margin-top: var(--space-6); }
+@media (min-width: 64rem) {
+  .review-head__grid { grid-template-columns: minmax(0, 1fr) 20rem; gap: var(--space-12); align-items: start; }
+}
+.review-head__title { font-size: var(--step-6); }
+.verdict {
+  display: grid; gap: var(--space-5); padding: var(--space-6);
+  border: var(--border-hairline) solid var(--border-subtle);
+  border-top: var(--border-rule) solid var(--accent-solid);
+  border-radius: 0 0 var(--radius-3) var(--radius-3); background-color: var(--surface-raised);
+}
+.verdict__row { display: flex; align-items: center; gap: var(--space-5); }
+.verdict__line { font-size: var(--step-0); color: var(--text-strong); font-weight: var(--weight-medium); line-height: var(--leading-snug); }
+.verdict__meta { font-size: var(--step--2); color: var(--text-faint); letter-spacing: var(--tracking-label); text-transform: uppercase; }
+
+.spec-table th { width: 40%; color: var(--text-muted); font-weight: var(--weight-regular); }
+.spec-table td { color: var(--text-strong); }
+
+/* ARTICLE */
+.article-head { padding-block: var(--space-10) var(--space-9); }
+.article-head__title { font-size: var(--step-6); max-width: var(--measure-wide); }
+.article-head__meta {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: var(--space-5); margin-top: var(--space-8); padding-top: var(--space-6);
+  border-top: var(--border-hairline) solid var(--border-subtle);
+}
+.article-figure { margin-bottom: var(--space-12); }
+.article-body { padding-bottom: var(--space-12); counter-reset: step; }
+/* Same reason: lets the overflow-x wrapper around a wide table shrink. */
+.article-body, .legal-body { min-width: 0; }
+.article-foot {
+  margin-top: var(--space-12); padding-top: var(--space-8);
+  border-top: var(--border-hairline) solid var(--border-subtle); display: grid;
+  gap: var(--space-8);
+}
+
+/* GUIDES */
+.guide-card__stats {
+  display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5);
+  font-size: var(--step--2); letter-spacing: var(--tracking-label); text-transform: uppercase;
+  color: var(--text-faint);
+}
+/* Three bars plus a text label — never colour alone. */
+.difficulty { display: inline-flex; align-items: center; gap: var(--space-2); }
+.difficulty__bars { display: inline-flex; gap: 2px; }
+.difficulty__bars i {
+  display: block; width: var(--space-2); height: var(--space-3); border-radius: 1px;
+  background-color: var(--border-medium);
+}
+.difficulty[data-level="1"] .difficulty__bars i:nth-child(-n+1), .difficulty[data-level="2"] .difficulty__bars i:nth-child(-n+2), .difficulty[data-level="3"] .difficulty__bars i:nth-child(-n+3) { background-color: var(--accent-solid); }
+
+/* GUIDE DETAIL — numbered steps with anchor targets. */
+/* The counter lives on the article body, not on .steps: a guide splits its
+   steps into several .steps blocks around in-article adverts, and a reset per
+   block would restart the numbering after every one. */
+.steps { display: grid; gap: var(--space-12); }
+.step { counter-increment: step; display: grid; gap: var(--space-5); scroll-margin-top: calc(var(--header-h) + var(--space-8)); }
+.step__head { display: grid; grid-template-columns: var(--space-12) minmax(0, 1fr); gap: var(--space-5); align-items: start; }
+.step__num {
+  display: grid; place-items: center; width: var(--space-12); height: var(--space-12);
+  border-radius: 50%; border: var(--border-thick) solid var(--accent-solid);
+  font-family: var(--font-display); font-weight: var(--weight-display);
+  font-size: var(--step-1); color: var(--text-strong); font-variant-numeric: tabular-nums;
+}
+.step__num::before { content: counter(step); }
+.step__title { font-size: var(--step-2); align-self: center; }
+.step__body { padding-left: calc(var(--space-12) + var(--space-5)); }
+@media (max-width: 40rem) {
+  .step__body { padding-left: 0; }
+}
+
+/* ABOUT */
+.team-grid { display: grid; gap: var(--space-9) var(--space-8); grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); }
+.team-member { display: grid; gap: var(--space-4); }
+.team-member img { width: var(--space-14); height: var(--space-14); border-radius: 50%; border: var(--border-hairline) solid var(--border-subtle); }
+.team-member__name { font-size: var(--step-1); }
+.team-member__role { font-size: var(--step--2); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--accent-text); }
+.team-member p { font-size: var(--step--1); color: var(--text-muted); }
+
+.scorecard { display: grid; gap: var(--space-4); }
+.scorecard__row { display: grid; grid-template-columns: var(--space-13) minmax(0, 1fr); gap: var(--space-5); align-items: baseline; font-size: var(--step--1); }
+.scorecard__band { font-family: var(--font-display); font-weight: var(--weight-display); color: var(--accent-text); font-variant-numeric: tabular-nums; }
+
+/* CONTACT */
+.contact-grid { display: grid; gap: var(--space-12); }
+@media (min-width: 56rem) {
+  .contact-grid { grid-template-columns: minmax(0, 1fr) 20rem; gap: var(--space-14); align-items: start; }
+}
+.contact-form { display: grid; gap: var(--space-6); }
+.contact-form__row { display: grid; gap: var(--space-6); }
+@media (min-width: 40rem) { .contact-form__row { grid-template-columns: 1fr 1fr; } }
+.contact-details dl { display: grid; gap: var(--space-5); font-size: var(--step--1); }
+.contact-details dt { font-size: var(--step--2); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-faint); margin-bottom: var(--space-1); }
+.contact-details dd { color: var(--text-body); }
+.contact-details a { color: var(--accent-text); }
+
+/* LEGAL — privacy and terms share this layout. */
+.legal-layout { display: grid; gap: var(--space-12); align-items: start; }
+@media (min-width: 64rem) {
+  .legal-layout { grid-template-columns: 17rem minmax(0, 1fr); gap: var(--space-14); }
+}
+.legal-body h2 { scroll-margin-top: calc(var(--header-h) + var(--space-6)); }
+.legal-body h3 { scroll-margin-top: calc(var(--header-h) + var(--space-6)); }
+.legal-updated { font-size: var(--step--2); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-faint); }
+
+/* 404 — no advertising on this template. */
+.notfound {
+  display: grid; justify-items: start; gap: var(--space-6); padding-block: var(--space-15);
+  max-width: var(--measure);
+}
+.notfound__code {
+  font-family: var(--font-display); font-weight: var(--weight-display);
+  font-size: var(--step-7); line-height: 1; letter-spacing: var(--tracking-display);
+  color: var(--accent-solid);
+}
+.notfound__links { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-4); }
+
+/* Breadcrumbs sit above the page title on every index and detail template. */
+.breadcrumbs + .page-head__inner { margin-top: var(--space-5); }
+.section-more { margin-top: var(--space-9); }
+.article-head .stack { margin-top: var(--space-6); }
+
+.contact-intro { margin-top: var(--space-3); }
+.contact-form { margin-top: var(--space-8); }
+.contact-details .panel + .panel { margin-top: var(--space-6); }
+.contact-details .contact-meta { margin-top: var(--space-5); }
+
+/* The form provider redirects to #sent on success, which reveals this panel.
+   No advertising is shown alongside it. */
+.form-status--sent { display: none; }
+.form-status--sent:target { display: block; margin-bottom: var(--space-9); }
+
+/* Content must never sit underneath the fixed anchor advert. */
+body:has(.ad-anchor:not([hidden])) { padding-bottom: var(--space-14); }

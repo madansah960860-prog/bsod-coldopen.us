@@ -1,0 +1,208 @@
+/* base.css — element defaults, layout primitives, prose. No components. */
+
+html {
+  /* Anchor targets must clear the sticky header. */
+  scroll-padding-top: calc(var(--header-h) + var(--space-6));
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  background-color: var(--surface-page); color: var(--text-body);
+  font-family: var(--font-text); font-size: var(--step-0); font-weight: var(--weight-regular);
+  line-height: var(--leading-body); letter-spacing: var(--tracking-body);
+  font-variant-numeric: proportional-nums; display: flex; flex-direction: column;
+}
+
+/* Pins the footer down on short pages (404, contact success). */
+.site-main { flex: 1 0 auto; }
+
+/* HEADINGS */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display); font-weight: var(--weight-display);
+  line-height: var(--leading-heading); letter-spacing: var(--tracking-heading);
+  color: var(--text-strong);
+  text-wrap: balance;   /* stops one-word last lines on headlines */
+}
+h1 { font-size: var(--step-5); line-height: var(--leading-display); letter-spacing: var(--tracking-display); }
+h2 { font-size: var(--step-3); }
+h3 { font-size: var(--step-2); }
+h4 { font-size: var(--step-1); font-weight: var(--weight-semibold); }
+h5 { font-size: var(--step-0); font-weight: var(--weight-semibold); }
+h6 {
+  font-family: var(--font-text); font-size: var(--step--1);
+  font-weight: var(--weight-semibold); letter-spacing: var(--tracking-label);
+  text-transform: uppercase; color: var(--text-muted);
+}
+
+/* LINKS — underlined in prose, undecorated where the whole object is the
+   target. Never signalled by colour alone. */
+a {
+  color: var(--accent-text); text-decoration-thickness: from-font;
+  transition: color var(--dur-1) var(--ease-out);
+}
+a:hover { color: var(--accent-quiet); }
+
+/* FOCUS — always visible; the ring sits outside so it reads on any surface. */
+:focus-visible {
+  outline: var(--border-thick) solid var(--focus-ring); outline-offset: var(--border-thick);
+  border-radius: var(--radius-1);
+}
+:focus:not(:focus-visible) { outline: none; }
+
+::selection {
+  background-color: var(--accent-solid); color: var(--on-accent);
+}
+
+hr {
+  height: var(--border-hairline); border: 0; background-color: var(--border-subtle);
+  margin-block: var(--space-10);
+}
+
+strong, b { font-weight: var(--weight-semibold); color: var(--text-strong); }
+small { font-size: var(--step--1); }
+
+code, kbd, samp {
+  font-family: var(--font-mono); font-size: 0.9em;
+}
+code {
+  background-color: var(--surface-sunken);
+  border: var(--border-hairline) solid var(--border-subtle); border-radius: var(--radius-1);
+  padding: 0.1em var(--space-1); color: var(--text-strong);
+}
+kbd {
+  background-color: var(--surface-raised);
+  border: var(--border-hairline) solid var(--border-medium);
+  border-bottom-width: var(--border-thick); border-radius: var(--radius-1);
+  padding: 0.12em var(--space-2); font-size: 0.85em; color: var(--text-strong);
+  white-space: nowrap;
+}
+
+figure { margin: 0; }
+figcaption {
+  font-size: var(--step--1); color: var(--text-muted); line-height: var(--leading-snug);
+  margin-top: var(--space-3); max-width: var(--measure-narrow);
+}
+
+/* SKIP LINK — first thing in the tab order on every page. */
+.skip-link {
+  position: absolute; top: var(--space-2); left: var(--space-2); z-index: var(--z-consent);
+  transform: translateY(-200%); background-color: var(--accent-solid);
+  color: var(--on-accent); font-weight: var(--weight-semibold); font-size: var(--step--1);
+  padding: var(--space-3) var(--space-5); border-radius: var(--radius-2);
+  text-decoration: none; transition: transform var(--dur-2) var(--ease-out);
+}
+.skip-link:focus {
+  transform: translateY(0); color: var(--on-accent);
+}
+
+/* LAYOUT PRIMITIVES */
+.wrap {
+  width: 100%; max-width: var(--wrap-max); margin-inline: auto; padding-inline: var(--gutter);
+}
+.wrap--wide { max-width: var(--wrap-wide); }
+
+.section { padding-block: var(--space-section); }
+.section--tight { padding-block: var(--space-12); }
+.section + .section { padding-top: 0; }
+
+/* The only spacing utility here: one rule, one variable. */
+.stack > * + * { margin-top: var(--flow, var(--space-6)); }
+
+/* Article + rail; collapses when a 300px unit and 68ch stop co-fitting. */
+.layout-rail {
+  display: grid; gap: var(--space-12) var(--space-10); align-items: start;
+}
+@media (min-width: 64rem) {
+  .layout-rail {
+    grid-template-columns: minmax(0, 1fr) var(--rail);
+  }
+}
+
+/* PROSE — long-form reading: articles, guide steps, legal pages. */
+.prose {
+  max-width: var(--measure); color: var(--text-body); font-size: var(--step-0);
+  line-height: var(--leading-body);
+}
+.prose > * + * { margin-top: var(--space-6); }
+
+.prose h2 {
+  font-size: var(--step-3); margin-top: var(--space-12); padding-top: var(--space-6);
+  border-top: var(--border-hairline) solid var(--border-subtle);
+}
+.prose h3 {
+  font-size: var(--step-1); margin-top: var(--space-9);
+}
+.prose h4 {
+  margin-top: var(--space-8); color: var(--text-strong);
+}
+.prose h2 + *, .prose h3 + *, .prose h4 + * { margin-top: var(--space-4); }
+
+.prose a {
+  text-decoration: underline; text-decoration-color: var(--accent-wash);
+  transition: text-decoration-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out);
+}
+.prose a:hover { text-decoration-color: currentColor; }
+
+.prose ul, .prose ol {
+  padding-left: var(--space-6); display: grid; gap: var(--space-3);
+}
+/* Without this a long URL pushes the page sideways. */
+.prose li { min-width: 0; }
+.prose li::marker { color: var(--text-faint); }
+.prose li > ul, .prose li > ol { margin-top: var(--space-3); }
+
+.prose blockquote {
+  margin-inline: 0; padding-left: var(--space-6);
+  border-left: var(--border-rule) solid var(--accent-solid); font-size: var(--step-1);
+  line-height: var(--leading-snug); letter-spacing: var(--tracking-heading);
+  color: var(--text-strong); max-width: var(--measure-narrow);
+}
+.prose blockquote cite {
+  display: block; margin-top: var(--space-3); font-size: var(--step--1); font-style: normal;
+  letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-muted);
+}
+
+.prose figure { margin-block: var(--space-9); }
+.prose img { border-radius: var(--radius-3); }
+
+/* The opening paragraph carries more weight, as in print. */
+.prose > p:first-of-type {
+  font-size: var(--step-1); line-height: var(--leading-snug); color: var(--text-strong);
+  max-width: var(--measure-wide);
+}
+
+/* TABLES — spec sheet and review rubric. */
+.table-scroll { overflow-x: auto; }
+
+table {
+  width: 100%; font-size: var(--step--1); font-variant-numeric: tabular-nums;
+  text-align: left;
+}
+caption {
+  caption-side: top; text-align: left; font-size: var(--step--1); color: var(--text-muted);
+  padding-bottom: var(--space-3);
+}
+th, td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--border-hairline) solid var(--border-subtle); vertical-align: top;
+}
+th {
+  font-weight: var(--weight-semibold); color: var(--text-strong);
+}
+thead th {
+  white-space: nowrap;
+  font-family: var(--font-text); font-size: var(--step--2);
+  letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--text-muted);
+  border-bottom-color: var(--border-medium);
+}
+tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+
+/* TEXT HELPERS — a deliberately short list. */
+.lede {
+  font-size: var(--step-1); line-height: var(--leading-snug); color: var(--text-muted);
+  max-width: var(--measure-wide); letter-spacing: var(--tracking-heading);
+}
+.muted { color: var(--text-muted); }
+.measure { max-width: var(--measure); }

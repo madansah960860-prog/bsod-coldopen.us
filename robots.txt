@@ -1,0 +1,22 @@
+# robots.txt for coldopen.us
+# Everything on this site is meant to be indexed. The only exclusions are the
+# error page and the raw asset-credits file, neither of which is a useful
+# search result.
+
+User-agent: *
+Allow: /
+Disallow: /404.html
+Disallow: /assets/img/CREDITS.md
+
+# Google's advertising crawler needs access to render pages it may serve ads
+# on. Blocking it breaks ad relevance and can stall an AdSense review.
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+Sitemap: https://coldopen.us/sitemap.xml
